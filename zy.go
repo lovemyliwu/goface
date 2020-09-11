@@ -1,11 +1,7 @@
 package main
 
-import "fmt"
+import "ct/say"
 
 func main() {
-	sayHello()
-}
-
-func sayHello() {
-	fmt.Println("Hello, World!")
+	ch.Hello()
 }
