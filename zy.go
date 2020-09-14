@@ -21,6 +21,7 @@ func greeting(who string) (string, error) {
 }
 
 func main() {
+	log.Println(ReturnVarTest())
 	ch.Hello()
 	chinese.Hi()
 	iso.Hi()
@@ -28,7 +29,8 @@ func main() {
 	ErrorTest()
 
 	log.Println("call Exception Handler")
-	err:=ExceptionHandler()
+	msg, err:=ExceptionHandler()
+	log.Println(msg)
 	log.Println(err)
 
 	log.Println("call Exception Test")
@@ -54,14 +56,21 @@ func ExceptionTest() {
 	log.Println("End Exception Test")
 }
 
-func ExceptionHandler() (err error) {
+func ExceptionHandler() (msg string, err error) {
 	defer func() {
 		if p := recover(); p != nil {
 			fmt.Printf("panic recover! p: %v\n", p)
+			msg="hi from recover"
 			err=errors.New("after handler error")
 		}
 	}()
 	ExceptionTest()
 	log.Println("End Exception Handler")
-	return nil
+	return "no error",nil
+}
+
+func ReturnVarTest() (info string) {
+	info = "hi"
+	//msg = "yes"
+	return info
 }
