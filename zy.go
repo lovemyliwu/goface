@@ -29,7 +29,7 @@ func main() {
 	ErrorTest()
 
 	log.Println("call Exception Handler")
-	msg, err:=ExceptionHandler()
+	msg, err := ExceptionHandler()
 	log.Println(msg)
 	log.Println(err)
 
@@ -60,13 +60,13 @@ func ExceptionHandler() (msg string, err error) {
 	defer func() {
 		if p := recover(); p != nil {
 			fmt.Printf("panic recover! p: %v\n", p)
-			msg="hi from recover"
-			err=errors.New("after handler error")
+			msg = "hi from recover"
+			err = errors.New("after handler error")
 		}
 	}()
 	ExceptionTest()
 	log.Println("End Exception Handler")
-	return "no error",nil
+	return "no error", nil
 }
 
 func ReturnVarTest() (info string) {
